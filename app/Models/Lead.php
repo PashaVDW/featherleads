@@ -17,7 +17,7 @@ class Lead extends Model
         'name',
         'email',
         'phone',
-        'type'
+        'type',
     ];
 
     public function user(): BelongsTo

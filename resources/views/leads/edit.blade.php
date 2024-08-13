@@ -2,11 +2,12 @@
 
 @section('content')
   <form
-    action="{{ route('leads.store') }}"
+    action="{{ route('leads.update', $lead) }}"
     class="w-full flex flex-col gap-4"
     method="POST"
   >
     @csrf
+    @method('PATCH')
     @if ($errors->any())
       <div
         style="
@@ -36,9 +37,9 @@
       <input
         class="input"
         name="company_name"
-        placeholder="Enter Company Name"
+        placeholder="{{ $lead->company_name }}"
         type="text"
-        value=""
+        value="{{ $lead->company_name }}"
       />
     </div>
 
@@ -50,9 +51,9 @@
       <input
         class="input"
         name="name"
-        placeholder="Enter Lead Name"
+        placeholder="{{ $lead->name }}"
         type="text"
-        value=""
+        value="{{ $lead->name }}"
       />
     </div>
 
@@ -63,9 +64,9 @@
       <input
         class="input"
         name="email"
-        placeholder="Enter email address"
+        placeholder="{{ $lead->email }}"
         type="text"
-        value=""
+        value="{{ $lead->email }}"
       />
     </div>
 
@@ -77,12 +78,21 @@
       <input
         class="input"
         name="phone"
-        placeholder="Enter Phone Number"
+        placeholder="{{ $lead->phone }}"
         type="text"
-        value=""
+        value="{{ $lead->phone }}"
       />
     </div>
-
+    <div class="w-full">
+      <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+        <label class="form-label max-w-32">Lead Type</label>
+        <select class="select" name="type">
+          <option value="Cold">Cold</option>
+          <option value="Warm">Warm</option>
+          <option value="Acquired">Acquired</option>
+        </select>
+      </div>
+    </div>
     <div class="flex justify-end">
       <button
         type="submit"

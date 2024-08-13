@@ -83,25 +83,27 @@
                     <td>{{ $lead->email }}</td>
                     <td>{{ $lead->phone }}</td>
                     <td>
-                        <form method="GET" action="{{ route('leads.show', $lead->id) }}">
-                            @csrf
-                          <button
-                            class="btn btn-sm btn-icon btn-clear btn-light"
-                          >
-                            <i class="ki-outline ki-notepad-edit"></i>
-                          </button>
-                        </form>
+                      <form
+                        method="GET"
+                        action="{{ route('leads.edit', $lead->id) }}"
+                      >
+                        @csrf
+                        <button class="btn btn-sm btn-icon btn-clear btn-light">
+                          <i class="ki-outline ki-notepad-edit"></i>
+                        </button>
+                      </form>
                     </td>
                     <td>
-                        <form method="POST" action="{{ route('leads.destroy', $lead->id) }}">
-                            @csrf
-                            @method("DELETE")
-                          <button
-                            class="btn btn-sm btn-icon btn-clear btn-light"
-                          >
-                            <i class="ki-outline ki-trash"></i>
-                          </button>
-                        </form>
+                      <form
+                        method="POST"
+                        action="{{ route('leads.destroy', $lead->id) }}"
+                      >
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-sm btn-icon btn-clear btn-light">
+                          <i class="ki-outline ki-trash"></i>
+                        </button>
+                      </form>
                     </td>
                   @endforeach
                 </tr>

@@ -30,10 +30,10 @@ class LeadController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-           'company_name' => 'required',
-           'name' => 'required',
-           'email' => 'nullable',
-           'phone' => 'required',
+            'company_name' => 'required',
+            'name' => 'required',
+            'email' => 'nullable',
+            'phone' => 'required',
         ]);
 
         $validated['user_id'] = Auth::id();
@@ -56,7 +56,9 @@ class LeadController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $lead = Lead::findOrFail($id);
+
+        return view('leads.edit', ['lead' => $lead]);
     }
 
     /**
@@ -64,7 +66,19 @@ class LeadController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'company_name' => 'required',
+            'name' => 'required',
+            'email' => 'nullable',
+            'phone' => 'required',
+            'type' => 'nullable',
+        ]);
+        $validated['user_id'] = Auth::id();
+
+        $lead = Lead::findOrFail($id);
+        $lead->update($validated);
+
+        return redirect('/leads');
     }
 
     /**
