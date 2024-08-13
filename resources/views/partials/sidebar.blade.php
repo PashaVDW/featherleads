@@ -61,6 +61,14 @@
           </a>
         </div>
       </div>
+        <div class="menu-item pt-2.25 pb-px">
+        <span
+            class="menu-heading uppercase text-2sm font-semibold text-gray-500 pl-[10px] pr-[10px]"
+        >
+          <i class="ki-filled ki-financial-schedule text-info text-md"></i>
+          Financial Management
+        </span>
+        </div>
     </div>
   </div>
 </div>
