@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lead;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LeadController extends Controller
 {
@@ -28,7 +29,18 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+           'company_name' => 'required',
+           'name' => 'required',
+           'email' => 'nullable',
+           'phone' => 'required',
+        ]);
+
+        $validated['user_id'] = Auth::id();
+
+        Lead::create($validated);
+
+        return redirect('/leads/create');
     }
 
     /**
@@ -60,6 +72,8 @@ class LeadController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Lead::destroy($id);
+
+        return redirect('/leads');
     }
 }

@@ -1,7 +1,17 @@
 @extends('index')
 
 @section('content')
-    <form class="w-full flex flex-col gap-4">
+    <form action="{{ route('leads.store') }}" class="w-full flex flex-col gap-4" method="POST">
+        @csrf
+        @if ($errors->any())
+            <div style="border: 2px solid purple; background-color: #f3e5f5; color: #4a148c; padding: 15px; border-radius: 5px; margin: 15px 0; font-family: Arial, sans-serif; font-size: 14px;">
+                <ul style="margin: 0; padding: 0; list-style-type: none;">
+                    @foreach ($errors->all() as $error)
+                        <li style="margin: 5px 0;">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
             <label class="form-label flex items-center gap-1 max-w-32">
                 Company Name
@@ -23,7 +33,7 @@
             </label>
             <input
                 class="input"
-                name="lead_name"
+                name="name"
                 placeholder="Enter Lead Name"
                 type="text"
                 value=""
@@ -33,7 +43,6 @@
         <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
             <label class="form-label flex items-center gap-1 max-w-32">
                 Email Address
-                <span class="text-danger">*</span>
             </label>
             <input
                 class="input"
@@ -51,7 +60,7 @@
             </label>
             <input
                 class="input"
-                name="phone_number"
+                name="phone"
                 placeholder="Enter Phone Number"
                 type="text"
                 value=""

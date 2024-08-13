@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('leads', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignId('user_id')->constrained();
             $table->string('company_name');
-            $table->string('first_name');
-            $table->string('last_name')->nullable();
+            $table->string('name');
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
             $table->string('type')->default('cold');

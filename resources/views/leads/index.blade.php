@@ -78,25 +78,30 @@
                     <td class="text-center">
                       {{ $lead->company_name }}
                     </td>
-                    <td>{{ $lead->first_name }} {{ $this->last_name }}</td>
+                    <td>{{ $lead->name }}</td>
                     <td>{{ $lead->type }}</td>
                     <td>{{ $lead->email }}</td>
                     <td>{{ $lead->phone }}</td>
                     <td>
-                      <a
-                        class="btn btn-sm btn-icon btn-clear btn-light"
-                        href="{{ route('leads.show') }}"
-                      >
-                        <i class="ki-outline ki-notepad-edit"></i>
-                      </a>
+                        <form method="GET" action="{{ route('leads.show', $lead->id) }}">
+                            @csrf
+                          <button
+                            class="btn btn-sm btn-icon btn-clear btn-light"
+                          >
+                            <i class="ki-outline ki-notepad-edit"></i>
+                          </button>
+                        </form>
                     </td>
                     <td>
-                      <a
-                        class="btn btn-sm btn-icon btn-clear btn-light"
-                        href="#"
-                      >
-                        <i class="ki-outline ki-trash"></i>
-                      </a>
+                        <form method="POST" action="{{ route('leads.destroy', $lead->id) }}">
+                            @csrf
+                            @method("DELETE")
+                          <button
+                            class="btn btn-sm btn-icon btn-clear btn-light"
+                          >
+                            <i class="ki-outline ki-trash"></i>
+                          </button>
+                        </form>
                     </td>
                   @endforeach
                 </tr>
