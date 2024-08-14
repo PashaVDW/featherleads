@@ -8,3 +8,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::resource('leads', LeadController::class)->middleware('auth');
+
+Route::middleware('auth')->controller(\App\Http\Controllers\FinanceController::class)->name('finance.')->group(function () {
+    Route::get('/finance', 'index')->name('index');
+});

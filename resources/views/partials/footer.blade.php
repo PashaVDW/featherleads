@@ -10,7 +10,7 @@
           class="text-gray-600 hover:text-primary"
           href="https://keenthemes.com"
         >
-          Keenthemes Inc.
+          Featherise Leads.
         </a>
       </div>
       <nav
