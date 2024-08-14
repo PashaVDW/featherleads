@@ -1,6 +1,6 @@
-@extends('index')
+@extends("index")
 
-@section('content')
+@section("content")
   <div class="grid">
     <div class="card card-grid min-w-full">
       <div class="card-header py-5 flex-wrap">
@@ -85,7 +85,7 @@
                     <td>
                       <form
                         method="GET"
-                        action="{{ route('leads.edit', $lead->id) }}"
+                        action="{{ route("leads.edit", $lead->id) }}"
                       >
                         @csrf
                         <button class="btn btn-sm btn-icon btn-clear btn-light">
@@ -96,10 +96,10 @@
                     <td>
                       <form
                         method="POST"
-                        action="{{ route('leads.destroy', $lead->id) }}"
+                        action="{{ route("leads.destroy", $lead->id) }}"
                       >
                         @csrf
-                        @method('DELETE')
+                        @method("DELETE")
                         <button class="btn btn-sm btn-icon btn-clear btn-light">
                           <i class="ki-outline ki-trash"></i>
                         </button>

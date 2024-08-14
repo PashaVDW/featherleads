@@ -32,7 +32,7 @@
           class="menu-label border border-transparent gap-[10px] pl-[10px] pr-[10px] py-[6px]"
           tabindex="0"
         >
-          <a class="menu-link" href="{{ route('leads.index') }}">
+          <a class="menu-link" href="{{ route("leads.index") }}">
             <span
               class="menu-icon items-start text-gray-500 dark:text-gray-400 w-[20px]"
             >
@@ -49,7 +49,7 @@
           class="menu-label border border-transparent gap-[10px] pl-[10px] pr-[10px] py-[6px]"
           tabindex="0"
         >
-          <a class="menu-link" href="{{ route('leads.create') }}">
+          <a class="menu-link" href="{{ route("leads.create") }}">
             <span
               class="menu-icon items-start text-gray-500 dark:text-gray-400 w-[20px]"
             >
@@ -74,7 +74,7 @@
           class="menu-label border border-transparent gap-[10px] pl-[10px] pr-[10px] py-[6px]"
           tabindex="0"
         >
-          <a class="menu-link" href="{{ route('finance.index') }}">
+          <a class="menu-link" href="{{ route("finance.index") }}">
             <span
               class="menu-icon items-start text-gray-500 dark:text-gray-400 w-[20px]"
             >

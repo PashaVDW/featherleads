@@ -1,13 +1,13 @@
-@extends('index')
+@extends("index")
 
-@section('content')
+@section("content")
   <form
-    action="{{ route('leads.update', $lead) }}"
+    action="{{ route("leads.update", $lead) }}"
     class="w-full flex flex-col gap-4"
     method="POST"
   >
     @csrf
-    @method('PATCH')
+    @method("PATCH")
     @if ($errors->any())
       <div
         style="

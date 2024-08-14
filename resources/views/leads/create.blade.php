@@ -1,8 +1,8 @@
-@extends('index')
+@extends("index")
 
-@section('content')
+@section("content")
   <form
-    action="{{ route('leads.store') }}"
+    action="{{ route("leads.store") }}"
     class="w-full flex flex-col gap-4"
     method="POST"
   >

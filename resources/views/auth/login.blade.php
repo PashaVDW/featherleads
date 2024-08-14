@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html class="h-full" data-theme="true" data-theme-mode="light" lang="en">
-  @include('partials.head')
+  @include("partials.head")
   <body class="flex h-full dark:bg-coal-500">
     <!--begin::Theme mode setup on page load-->
     <script>
-      const defaultThemeMode = 'light' // light|dark|system
-      let themeMode
+      const defaultThemeMode = 'light'; // light|dark|system
+      let themeMode;
 
       if (document.documentElement) {
         if (localStorage.getItem('theme')) {
-          themeMode = localStorage.getItem('theme')
+          themeMode = localStorage.getItem('theme');
         } else if (document.documentElement.hasAttribute('data-theme-mode')) {
-          themeMode = document.documentElement.getAttribute('data-theme-mode')
+          themeMode = document.documentElement.getAttribute('data-theme-mode');
         } else {
-          themeMode = defaultThemeMode
+          themeMode = defaultThemeMode;
         }
 
         if (themeMode === 'system') {
           themeMode = window.matchMedia('(prefers-color-scheme: dark)').matches
             ? 'dark'
-            : 'light'
+            : 'light';
         }
 
-        document.documentElement.classList.add(themeMode)
+        document.documentElement.classList.add(themeMode);
       }
     </script>
     <!--end::Theme mode setup on page load-->
@@ -40,7 +40,7 @@
     >
       <div class="card max-w-[370px] w-full">
         <form
-          action="{{ route('login') }}"
+          action="{{ route("login") }}"
           class="card-body flex flex-col gap-5 p-10"
           id="sign_in_form"
           method="POST"
@@ -54,7 +54,7 @@
               <span class="text-2sm text-gray-600 me-1.5">
                 Need an account?
               </span>
-              <a class="text-2sm link" href="{{ route('register') }}">
+              <a class="text-2sm link" href="{{ route("register") }}">
                 Sign up
               </a>
             </div>

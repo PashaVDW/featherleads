@@ -53,5 +53,5 @@
   <link href="assets/vendors/apexcharts/apexcharts.css" rel="stylesheet" />
   <link href="assets/vendors/keenicons/styles.bundle.css" rel="stylesheet" />
   <link href="assets/css/styles.css" rel="stylesheet" />
-  @vite('resources/css/app.scss')
+  @vite("resources/css/app.scss")
 </head>
