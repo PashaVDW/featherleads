@@ -53,5 +53,7 @@
   <link href="assets/vendors/apexcharts/apexcharts.css" rel="stylesheet" />
   <link href="assets/vendors/keenicons/styles.bundle.css" rel="stylesheet" />
   <link href="assets/css/styles.css" rel="stylesheet" />
-  @vite("resources/css/app.scss")
+    <script src="{{ asset('assets/js/core.bundle.js') }}"></script>
+    @vite("resources/css/app.scss")
+
 </head>
