@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('finances', function (Blueprint $table) {
-            $table->id();
-            $table->decimal('budget');
-            $table->decimal('savings');
+            $table->uuid('id')->primary();
+            $table->decimal('amount_available');
+            $table->decimal('savings')->nullable();
             $table->decimal('fixed_costs');
             $table->timestamps();
         });

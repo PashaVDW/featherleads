@@ -289,59 +289,48 @@
         </div>
       </div>
       <div class="flex items-center lg:pb-4 gap-2.5">
-        <div
-          class="dropdown"
-          data-dropdown="true"
-          data-dropdown-placement="bottom-end"
-          data-dropdown-trigger="click"
-        >
-          <button class="dropdown-toggle btn btn-sm btn-primary">
-            <i class="ki-filled ki-users"></i>
-            Connect
-          </button>
-          <div class="dropdown-content menu-default w-full max-w-[220px]">
-            <div class="menu-item" data-dropdown-dismiss="true">
+        <button class="btn btn-primary" data-modal-toggle="#modal_1">
+          New Finance Plan
+        </button>
+        <div class="modal" data-modal="true" id="modal_1">
+          <div class="modal-content max-w-[600px] top-[20%]">
+            <div class="modal-header">
+              <h3 class="modal-title">Featherleads - Financial Plan</h3>
               <button
-                class="menu-link"
-                data-modal-toggle="#share_profile_modal"
+                class="btn btn-xs btn-icon btn-light"
+                data-modal-dismiss="true"
               >
-                <span class="menu-icon">
-                  <i class="ki-filled ki-coffee"></i>
-                </span>
-                <span class="menu-title">Share Profile</span>
+                <i class="ki-outline ki-cross"></i>
               </button>
             </div>
-            <div class="menu-item" data-dropdown-dismiss="true">
-              <a
-                class="menu-link"
-                data-modal-toggle="#give_award_modal"
-                href="#"
-              >
-                <span class="menu-icon">
-                  <i class="ki-filled ki-award"></i>
-                </span>
-                <span class="menu-title">Give Award</span>
-              </a>
-            </div>
-            <div class="menu-item" data-dropdown-dismiss="true">
-              <button class="menu-link">
-                <span class="menu-icon">
-                  <i class="ki-filled ki-chart-line"></i>
-                </span>
-                <span class="menu-title">Stay Updated</span>
-                <label class="switch switch-sm">
-                  <input name="check" type="checkbox" value="1" />
-                  />
-                </label>
-              </button>
-            </div>
-            <div class="menu-item" data-dropdown-dismiss="true">
-              <button class="menu-link" data-modal-toggle="#report_user_modal">
-                <span class="menu-icon">
-                  <i class="ki-filled ki-information-2"></i>
-                </span>
-                <span class="menu-title">Report User</span>
-              </button>
+            <div class="modal-body">
+                <!-- Modal Form -->
+                <form id="financeForm" method="POST" action="{{ route('finance.store') }}">
+                    @csrf
+                    <div class="w-full mb-4">
+                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                            <label class="form-label max-w-32">Monthly Income</label>
+                            <div class="flex flex-col w-full gap-1">
+                                <input class="input" name="income" placeholder="99,99" type="text" value="{{ old('income') }}" />
+                                <span class="form-hint">Enter your monthly income, we'll use this to calculate your best options.</span>
+                                <span class="text-red-500 text-sm error-message" id="incomeError"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full mb-4">
+                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                            <label class="form-label max-w-32">Fixed Costs</label>
+                            <div class="flex flex-col w-full gap-1">
+                                <input class="input" name="fixed_costs" placeholder="99,99" type="text" value="{{ old('fixed_costs') }}" />
+                                <span class="form-hint">Enter the amount of fixed costs. (e.g. shopping / rent)</span>
+                                <span class="text-red-500 text-sm error-message" id="fixedCostsError"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="btn btn-primary">Create Plan</button>
+                    </div>
+                </form>
             </div>
           </div>
         </div>
@@ -527,21 +516,18 @@
         </div>
       </div>
       <!-- end: cards -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">
-                    Monthly Saved
-                </h3>
-                <button class="btn btn-sm btn-icon btn-light btn-clear">
-                    <i class="ki-outline ki-dots-vertical">
-                    </i>
-                </button>
-            </div>
-            <div class="px-3 py-1">
-                <div id="area_chart">
-                </div>
-            </div>
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Monthly Saved</h3>
+          <button class="btn btn-sm btn-icon btn-light btn-clear">
+            <i class="ki-outline ki-dots-vertical"></i>
+          </button>
         </div>
+        <div class="px-3 py-1">
+          <div id="area_chart"></div>
+        </div>
+        <script src="{{ asset("assets/js/finance_apexchart.js") }}"></script>
+      </div>
       <!-- begin: list -->
       <div class="hidden" id="network_list">
         <div class="flex flex-col gap-5 lg:gap-7.5">
@@ -696,5 +682,4 @@
     <!-- end: works -->
   </div>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <script src="{{ asset('assets/js/finance_apexchart.js') }}"
 @endsection

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->uuid('finance_id')->nullable();
+            $table->foreign('finance_id')->references('id')->on('finances');
             $table->rememberToken();
             $table->timestamps();
         });
