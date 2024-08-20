@@ -31,8 +31,7 @@ class FixedCost implements DataAwareRule, ValidationRule
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if ($this->data['fixed_costs'] > $this->data['income'])
-        {
+        if ($this->data['fixed_costs'] > $this->data['income']) {
             $fail('The :attribute cannot be higher than your income');
         }
     }

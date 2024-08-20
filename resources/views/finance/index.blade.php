@@ -5,293 +5,15 @@
     <div
       class="flex flex-nowrap items-center lg:items-end justify-between border-b border-b-gray-200 dark:border-b-coal-100 gap-6 mb-5 lg:mb-10"
     >
-      <div class="grid">
-        <div class="scrollable-x-auto">
-          <div class="menu gap-3" data-menu="true">
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
-              data-menu-item-placement="bottom-start"
-              data-menu-item-toggle="dropdown"
-              data-menu-item-trigger="click"
-            >
-              <div class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
-                >
-                  Profiles
-                </span>
-                <span class="menu-arrow">
-                  <i
-                    class="ki-filled ki-down text-2xs text-gray-500 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:text-primary"
-                  ></i>
-                </span>
-              </div>
-              <div class="menu-dropdown menu-default py-2 min-w-[200px]">
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/profiles/default.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">Default</span>
-                  </a>
-                </div>
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/profiles/creator.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">Creator</span>
-                  </a>
-                </div>
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/profiles/company.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">Company</span>
-                  </a>
-                </div>
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/profiles/nft.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">NFT</span>
-                  </a>
-                </div>
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/profiles/blogger.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">Blogger</span>
-                  </a>
-                </div>
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/profiles/crm.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">CRM</span>
-                  </a>
-                </div>
-                <div
-                  class="menu-item"
-                  data-menu-item-offset="-10px, 0"
-                  data-menu-item-overflow="true"
-                  data-menu-item-placement="right-start"
-                  data-menu-item-toggle="dropdown"
-                  data-menu-item-trigger="click|lg:click"
-                >
-                  <div class="menu-link" tabindex="0">
-                    <span class="menu-title">More</span>
-                    <span class="menu-arrow">
-                      <i
-                        class="ki-filled ki-down text-2xs [.menu-dropdown_&amp;]:-rotate-90"
-                      ></i>
-                    </span>
-                  </div>
-                  <div class="menu-dropdown menu-default py min-w-[200px]">
-                    <div class="menu-item">
-                      <a
-                        class="menu-link"
-                        href="html/demo1/public-profile/profiles/gamer.html"
-                        tabindex="0"
-                      >
-                        <span class="menu-title">Gamer</span>
-                      </a>
-                    </div>
-                    <div class="menu-item">
-                      <a
-                        class="menu-link"
-                        href="html/demo1/public-profile/profiles/feeds.html"
-                        tabindex="0"
-                      >
-                        <span class="menu-title">Feeds</span>
-                      </a>
-                    </div>
-                    <div class="menu-item">
-                      <a
-                        class="menu-link"
-                        href="html/demo1/public-profile/profiles/plain.html"
-                        tabindex="0"
-                      >
-                        <span class="menu-title">Plain</span>
-                      </a>
-                    </div>
-                    <div class="menu-item">
-                      <a
-                        class="menu-link"
-                        href="html/demo1/public-profile/profiles/modal.html"
-                        tabindex="0"
-                      >
-                        <span class="menu-title">Modal</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
-              data-menu-item-placement="bottom-start"
-              data-menu-item-toggle="dropdown"
-              data-menu-item-trigger="click"
-            >
-              <div class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
-                >
-                  Projects
-                </span>
-                <span class="menu-arrow">
-                  <i
-                    class="ki-filled ki-down text-2xs text-gray-500 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:text-primary"
-                  ></i>
-                </span>
-              </div>
-              <div class="menu-dropdown menu-default py-2 min-w-[200px]">
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/projects/3-columns.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">3 Columns</span>
-                  </a>
-                </div>
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/projects/2-columns.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">2 Columns</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
-            >
-              <a
-                class="menu-link gap-1.5 pb-2 lg:pb-4 px-2"
-                href="html/demo1/public-profile/works.html"
-                tabindex="0"
-              >
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
-                >
-                  Works
-                </span>
-              </a>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
-            >
-              <a
-                class="menu-link gap-1.5 pb-2 lg:pb-4 px-2"
-                href="html/demo1/public-profile/teams.html"
-                tabindex="0"
-              >
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
-                >
-                  Teams
-                </span>
-              </a>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary active"
-            >
-              <a
-                class="menu-link gap-1.5 pb-2 lg:pb-4 px-2"
-                href="html/demo1/public-profile/network.html"
-                tabindex="0"
-              >
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
-                >
-                  Network
-                </span>
-              </a>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
-            >
-              <a
-                class="menu-link gap-1.5 pb-2 lg:pb-4 px-2"
-                href="html/demo1/public-profile/activity.html"
-                tabindex="0"
-              >
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
-                >
-                  Activity
-                </span>
-              </a>
-            </div>
-            <div
-              class="menu-item border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
-              data-menu-item-placement="bottom-start"
-              data-menu-item-toggle="dropdown"
-              data-menu-item-trigger="click"
-            >
-              <div class="menu-link gap-1.5 pb-2 lg:pb-4 px-2" tabindex="0">
-                <span
-                  class="menu-title text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary"
-                >
-                  More
-                </span>
-                <span class="menu-arrow">
-                  <i
-                    class="ki-filled ki-down text-2xs text-gray-500 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:text-primary"
-                  ></i>
-                </span>
-              </div>
-              <div class="menu-dropdown menu-default py-2 min-w-[200px]">
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/campaigns/card.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">Campaigns - Card</span>
-                  </a>
-                </div>
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/campaigns/list.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">Campaigns - List</span>
-                  </a>
-                </div>
-                <div class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="html/demo1/public-profile/empty.html"
-                    tabindex="0"
-                  >
-                    <span class="menu-title">Empty</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="flex items-center lg:pb-4 gap-2.5">
-        <button class="btn btn-primary" data-modal-toggle="#modal_1">
+        <button class="btn btn-outline btn-info" data-modal-toggle="#modal_1">
           New Finance Plan
         </button>
+        <!-- Modal Structure -->
+        <button class="btn btn-outline btn-info" data-modal-toggle="#modal_2">
+          New Category Item
+        </button>
+        <!-- Modal Structure -->
         <div class="modal" data-modal="true" id="modal_1">
           <div class="modal-content max-w-[600px] top-[20%]">
             <div class="modal-header">
@@ -304,33 +26,144 @@
               </button>
             </div>
             <div class="modal-body">
-                <!-- Modal Form -->
-                <form id="financeForm" method="POST" action="{{ route('finance.store') }}">
-                    @csrf
-                    <div class="w-full mb-4">
-                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                            <label class="form-label max-w-32">Monthly Income</label>
-                            <div class="flex flex-col w-full gap-1">
-                                <input class="input" name="income" placeholder="99,99" type="text" value="{{ old('income') }}" />
-                                <span class="form-hint">Enter your monthly income, we'll use this to calculate your best options.</span>
-                                <span class="text-red-500 text-sm error-message" id="incomeError"></span>
-                            </div>
-                        </div>
+              <!-- Modal Form -->
+              <form
+                id="financeForm"
+                method="POST"
+                action="{{ route("finance.store") }}"
+              >
+                @csrf
+                <div class="w-full mb-4">
+                  <div
+                    class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5"
+                  >
+                    <label class="form-label max-w-32">Monthly Income</label>
+                    <div class="flex flex-col w-full gap-1">
+                      <input
+                        class="input"
+                        name="income"
+                        placeholder="99.99"
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        value="{{ old("income") }}"
+                      />
+                      <span class="form-hint">
+                        Enter your monthly income, we'll use this to calculate
+                        your best options.
+                      </span>
+                      <span
+                        class="text-red-500 text-sm error-message"
+                        id="incomeError"
+                      ></span>
                     </div>
-                    <div class="w-full mb-4">
-                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
-                            <label class="form-label max-w-32">Fixed Costs</label>
-                            <div class="flex flex-col w-full gap-1">
-                                <input class="input" name="fixed_costs" placeholder="99,99" type="text" value="{{ old('fixed_costs') }}" />
-                                <span class="form-hint">Enter the amount of fixed costs. (e.g. shopping / rent)</span>
-                                <span class="text-red-500 text-sm error-message" id="fixedCostsError"></span>
-                            </div>
-                        </div>
+                  </div>
+                </div>
+                <div class="w-full mb-4">
+                  <div
+                    class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5"
+                  >
+                    <label class="form-label max-w-32">Fixed Costs</label>
+                    <div class="flex flex-col w-full gap-1">
+                      <input
+                        class="input"
+                        name="fixed_costs"
+                        placeholder="99.99"
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        value="{{ old("fixed_costs") }}"
+                      />
+                      <span class="form-hint">
+                        Enter the amount of fixed costs. (e.g. shopping / rent)
+                      </span>
+                      <span
+                        class="text-red-500 text-sm error-message"
+                        id="fixedCostsError"
+                      ></span>
                     </div>
-                    <div class="flex justify-end">
-                        <button type="submit" class="btn btn-primary">Create Plan</button>
+                  </div>
+                </div>
+                <div class="flex justify-end">
+                  <button type="submit" class="btn btn-primary">
+                    Create Plan
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal" data-modal="true" id="modal_2">
+          <div class="modal-content max-w-[600px] top-[20%]">
+            <div class="modal-header">
+              <h3 class="modal-title">Featherleads - Category Item</h3>
+              <button
+                class="btn btn-xs btn-icon btn-light"
+                data-modal-dismiss="true"
+              >
+                <i class="ki-outline ki-cross"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Modal Form -->
+              <form
+                id="categoryForm"
+                method="POST"
+                action="{{ route("finance.category.store") }}"
+              >
+                @csrf
+                <div class="w-full mb-4">
+                  <div
+                    class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5"
+                  >
+                    <label class="form-label max-w-32">Name</label>
+                    <div class="flex flex-col w-full gap-1">
+                      <input
+                        class="input"
+                        name="finance_category_name"
+                        placeholder="example name"
+                        type="text"
+                        value=""
+                      />
+                      <span class="form-hint">
+                        This will be the title for your category.
+                      </span>
+                      <span
+                        class="text-red-500 text-sm error-message"
+                        id="incomeError"
+                      ></span>
                     </div>
-                </form>
+                  </div>
+                </div>
+                <div class="w-full mb-4">
+                  <div
+                    class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5"
+                  >
+                    <label class="form-label max-w-32">Description</label>
+                    <div class="flex flex-col w-full gap-1">
+                      <input
+                        class="input"
+                        name="finance_category_description"
+                        placeholder="(optional) example description"
+                        type="text"
+                        value=""
+                      />
+                      <span class="form-hint">
+                        This will be the description for your category.
+                      </span>
+                      <span
+                        class="text-red-500 text-sm error-message"
+                        id="fixedCostsError"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex justify-end">
+                  <button type="submit" class="btn btn-primary">
+                    Create Item
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -417,8 +250,11 @@
       </div>
       <!-- end: toolbar -->
       <!-- begin: cards -->
-      <div id="network_cards">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
+      <div
+        id="network_cards"
+        class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7.5"
+      >
+        @foreach ($financeCategory as $category)
           <div class="card">
             <div class="card-body lg:pt-9 lg:pb-7.5">
               <div class="flex justify-center mb-2.5">
@@ -437,7 +273,7 @@
                   class="hover:text-primary-active text-base leading-5 font-semibold text-gray-900"
                   href="#"
                 >
-                  [NAME]
+                  {{ $category->name }}
                 </a>
               </div>
               <div
@@ -446,24 +282,8 @@
                 <div
                   class="flex items-center text-sm font-medium text-gray-600"
                 >
-                  <i class="ki-filled ki-abstract-41 me-1 text-gray-500"></i>
-                  Pinnacle Innovate
+                  {{ $category->description }}
                 </div>
-                <div
-                  class="flex items-center text-sm font-medium text-gray-600"
-                >
-                  <i class="ki-filled ki-sms me-1 text-gray-500"></i>
-                  <a class="text-gray-600 hover:text-primary-active" href="#">
-                    kevin@pinnacle.com
-                  </a>
-                </div>
-              </div>
-              <div class="grid justify-center gap-1.5 mb-7.5">
-                <span
-                  class="text-2xs font-medium uppercase text-gray-500 text-center"
-                >
-                  hi hi hi
-                </span>
               </div>
               <div
                 class="flex items-center justify-center flex-wrap gap-2 lg:gap-5"
@@ -477,7 +297,7 @@
                     92
                   </span>
                   <span class="text-gray-600 text-xs font-medium">
-                    Purchases
+                    Today spent
                   </span>
                 </div>
                 <div
@@ -489,7 +309,7 @@
                     $69
                   </span>
                   <span class="text-gray-600 text-xs font-medium">
-                    Avg. Price
+                    Monthly Avg. spent
                   </span>
                 </div>
                 <div
@@ -498,7 +318,7 @@
                   <span
                     class="text-gray-900 text-2sm leading-none font-semibold"
                   >
-                    $6,240
+                    {{ $category->amount }}
                   </span>
                   <span class="text-gray-600 text-xs font-medium">
                     Total spent
@@ -513,7 +333,7 @@
               </a>
             </div>
           </div>
-        </div>
+        @endforeach
       </div>
       <!-- end: cards -->
       <div class="card">

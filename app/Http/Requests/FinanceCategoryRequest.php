@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\FixedCost;
 use Illuminate\Foundation\Http\FormRequest;
 
-class FinanceRequest extends FormRequest
+class FinanceCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +22,8 @@ class FinanceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'income' => ['required', 'numeric'],
-            'fixed_costs' => ['required', new FixedCost, 'numeric'],
+            'finance_category_name' => 'required|string|max:255',
+            'finance_category_description' => 'nullable|string|max:255',
         ];
     }
 }

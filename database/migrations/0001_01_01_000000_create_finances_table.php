@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('finances', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->decimal('amount_available');
+            $table->decimal('income')->default(0);
+            $table->decimal('amount_available')->default(0);
             $table->decimal('savings')->nullable();
-            $table->decimal('fixed_costs');
+            $table->decimal('fixed_costs')->default(0);
             $table->timestamps();
         });
     }

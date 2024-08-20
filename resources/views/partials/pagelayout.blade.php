@@ -949,7 +949,7 @@
                                 class="hover:text-primary-active text-gray-900 font-semibold"
                                 href="#"
                               >
-                                @Cody
+                                {{ $user->name }}
                               </a>
                               <span class="text-gray-700 font-medium">
                                 For an expert opinion, check out what Mike has
@@ -2030,7 +2030,7 @@
                                 class="hover:text-primary-active text-gray-900 font-semibold"
                                 href="#"
                               >
-                                @Cody
+                                {{ $user->name }}
                               </a>
                               <span class="text-gray-700 font-medium">
                                 This design is simply stunning! From layout to
@@ -2552,19 +2552,16 @@
                       <span
                         class="text-sm text-gray-800 font-semibold leading-none"
                       >
-                        Cody Fisher
+                        {{ $user->name }}
                       </span>
                       <a
                         class="text-xs text-gray-600 hover:text-primary font-medium leading-none"
                         href="html/demo1/account/home/get-started.html"
                       >
-                        c.fisher@gmail.com
+                        {{ $user->email }}
                       </a>
                     </div>
                   </div>
-                  <span class="badge badge-xs badge-primary badge-outline">
-                    Pro
-                  </span>
                 </div>
                 <div class="menu-separator"></div>
                 <div class="flex flex-col" data-menu-dismiss="true">
@@ -2712,7 +2709,7 @@
                       <span class="menu-icon">
                         <i class="ki-filled ki-message-programming"></i>
                       </span>
-                      <span class="menu-title">Dev Forum</span>
+                      <span class="menu-title">Create a Ticket</span>
                     </a>
                   </div>
                   <div
@@ -2722,22 +2719,6 @@
                     data-menu-item-toggle="dropdown"
                     data-menu-item-trigger="click|lg:hover"
                   >
-                    <div class="menu-link">
-                      <span class="menu-icon">
-                        <i class="ki-filled ki-icon"></i>
-                      </span>
-                      <span class="menu-title">Language</span>
-                      <div
-                        class="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0"
-                      >
-                        English
-                        <img
-                          alt=""
-                          class="inline-block size-3.5 rounded-full"
-                          src="assets/media/flags/united-states.svg"
-                        />
-                      </div>
-                    </div>
                     <div
                       class="menu-dropdown menu-default light:border-gray-300 w-full max-w-[170px]"
                     >
@@ -2825,7 +2806,6 @@
                           type="checkbox"
                           value="1"
                         />
-                        />
                       </label>
                     </div>
                   </div>
@@ -2853,6 +2833,75 @@
       <div class="container-fixed" id="content_container"></div>
       <!-- end: container -->
       <!-- begin: container -->
+      @if (session("success"))
+        <div
+          id="successMessage"
+          class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md max-w-lg mx-auto mt-4"
+          role="alert"
+        >
+          <div class="flex">
+            <div class="py-1">
+              <svg
+                class="fill-current h-6 w-6 text-teal-500 mr-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="font-bold">Success!</p>
+              <p class="text-sm">{{ session("success") }}</p>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          setTimeout(function () {
+            const successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+              successMessage.style.transition = 'opacity 1s ease-out';
+              successMessage.style.opacity = '0';
+              setTimeout(function () {
+                successMessage.remove();
+              }, 1000);
+            }
+          }, 1500);
+        </script>
+      @endif
+
+      @if ($errors->any())
+        <div class="card mx-auto max-w-md" id="error_card">
+          <div class="card-body flex items-start justify-between py-5">
+            <!-- Left content (icon, message, and errors) -->
+            <div class="flex-1 flex flex-col gap-2.5">
+              <div class="text-2sm mb-px flex items-center gap-2">
+                <i class="ki-duotone ki-information-2 text-info text-2xl"></i>
+                <span class="text-gray-600">
+                  There were some issues with your submission.
+                </span>
+              </div>
+              <ul class="text-2xs font-medium text-gray-500">
+                @foreach ($errors->all() as $error)
+                  <li class="mb-1">{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            <!-- Dismiss button -->
+            <div class="flex-shrink-0">
+              <button
+                class="btn btn-light btn-xs"
+                onclick="dismissCard('#error_card')"
+              >
+                Dismiss
+              </button>
+            </div>
+          </div>
+        </div>
+      @endif
+
       <div class="container-fixed">
         <div
           class="flex flex-wrap items-center lg:items-end justify-between gap-5 pb-7.5"
@@ -2870,3 +2919,11 @@
     @include("partials.footer")
   </div>
 </div>
+<script>
+  function dismissCard(cardId) {
+    const card = document.querySelector(cardId);
+    if (card) {
+      card.style.display = 'none'; // Hides the error card
+    }
+  }
+</script>

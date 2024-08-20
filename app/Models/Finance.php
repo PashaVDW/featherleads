@@ -13,13 +13,14 @@ class Finance extends Model
 
     protected $fillable = [
         'amount_available',
+        'income',
         'savings',
-        'fixed_costs'
+        'fixed_costs',
+        'user_id',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-
 }

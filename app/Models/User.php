@@ -22,7 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'finance_id'
+        'finance_id',
     ];
 
     /**
@@ -58,4 +58,8 @@ class User extends Authenticatable
         return $this->hasOne(Finance::class);
     }
 
+    public function financeCategories()
+    {
+        return $this->hasMany(FinanceCategory::class);
+    }
 }

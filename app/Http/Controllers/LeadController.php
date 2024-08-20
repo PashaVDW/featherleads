@@ -40,7 +40,7 @@ class LeadController extends Controller
 
         Lead::create($validated);
 
-        return redirect('/leads/create');
+        return redirect()->route('leads.index')->with('success', 'Lead record updated successfully!');
     }
 
     /**

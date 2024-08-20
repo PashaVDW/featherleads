@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('finance_categories', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignId('user_id')->constrained();
             $table->string('name');
             $table->text('description')->nullable();
             $table->double('amount')->default(0);

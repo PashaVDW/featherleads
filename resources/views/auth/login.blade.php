@@ -60,7 +60,10 @@
             </div>
           </div>
           <div class="grid grid-cols-2 gap-2.5">
-            <a class="btn btn-light btn-sm justify-center" href="#">
+            <a
+              class="btn btn-light btn-sm justify-center"
+              href="{{ route("google.redirect") }}"
+            >
               <img
                 alt=""
                 class="size-3.5 shrink-0"
@@ -68,7 +71,7 @@
               />
               Use Google
             </a>
-            <a class="btn btn-light btn-sm justify-center" href="#">
+            <a class="btn btn-light btn-sm justify-center" href="">
               <img
                 alt=""
                 class="size-3.5 shrink-0 dark:hidden"
