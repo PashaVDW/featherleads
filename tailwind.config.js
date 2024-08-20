@@ -640,4 +640,3 @@ module.exports = {
 		require('./resources/metronic/core/plugins/components/leaflet')
 	],
 };
-

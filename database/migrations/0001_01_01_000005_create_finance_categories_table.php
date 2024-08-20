@@ -16,7 +16,11 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->double('amount')->default(0);
+            $table->double('daily_amount')->default(0);
+            $table->double('monthly_average')->default(0);
+            $table->double('total_amount')->default(0);
+            $table->double('budget')->default(0);
+
             $table->timestamps();
         });
     }

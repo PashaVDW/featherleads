@@ -13,6 +13,9 @@
         <button class="btn btn-outline btn-info" data-modal-toggle="#modal_2">
           New Category Item
         </button>
+        <button class="btn btn-outline btn-info" data-modal-toggle="#modal_3">
+          New Budget
+        </button>
         <!-- Modal Structure -->
         <div class="modal" data-modal="true" id="modal_1">
           <div class="modal-content max-w-[600px] top-[20%]">
@@ -294,7 +297,7 @@
                   <span
                     class="text-gray-900 text-2sm leading-none font-semibold"
                   >
-                    92
+                    €{{ $category->daily_amount }}
                   </span>
                   <span class="text-gray-600 text-xs font-medium">
                     Today spent
@@ -306,7 +309,7 @@
                   <span
                     class="text-gray-900 text-2sm leading-none font-semibold"
                   >
-                    $69
+                    €{{ $category->monthly_average }}
                   </span>
                   <span class="text-gray-600 text-xs font-medium">
                     Monthly Avg. spent
@@ -318,7 +321,7 @@
                   <span
                     class="text-gray-900 text-2sm leading-none font-semibold"
                   >
-                    {{ $category->amount }}
+                    €{{ $category->total_amount }}
                   </span>
                   <span class="text-gray-600 text-xs font-medium">
                     Total spent
@@ -327,10 +330,106 @@
               </div>
             </div>
             <div class="card-footer justify-center">
-              <a class="btn btn-light btn-sm">
-                <i class="ki-filled ki-check-circle"></i>
-                Connected
-              </a>
+              <button
+                class="btn btn-outline btn-info"
+                data-modal-toggle="#modal_4"
+              >
+                Add Today's Expense
+              </button>
+              <div class="modal" data-modal="true" id="modal_4">
+                <div class="modal-content max-w-[600px] top-[20%]">
+                  <div class="modal-body">
+                    <form
+                      method="POST"
+                      action="{{ route("finance.category.addDailyExpense") }}"
+                    >
+                      @csrf
+                      <input
+                        name="id"
+                        type="hidden"
+                        value="{{ $category->id }}"
+                      />
+                      <div class="w-full">
+                        <div
+                          class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5"
+                        >
+                          <label class="form-label max-w-32">
+                            Daily Expense
+                          </label>
+                          <div class="flex flex-col w-full gap-1">
+                            <input
+                              class="input"
+                              name="daily_expense"
+                              placeholder="99,99"
+                              type="number"
+                              step="0.1"
+                              min="0"
+                              value=""
+                            />
+                            <span class="form-hint">
+                              Enter the amount of your daily expense. Don't
+                              worry; it stacks.
+                            </span>
+                          </div>
+                        </div>
+                        <!-- Button -->
+                        <div class="flex justify-end mt-4">
+                          <button
+                            type="submit"
+                            class="btn btn-outline btn-info"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal toggle -->
+              <div class="flex justify-center m-5">
+                <button
+                  class="btn btn-outline btn-danger"
+                  data-modal-toggle="#daily_expense_clear"
+                >
+                  Clear Today's Expenses
+                </button>
+              </div>
+
+              <!-- Main modal -->
+              <form
+                method="POST"
+                action="{{ route("finance.category.clearDailyExpense") }}"
+              >
+                @csrf
+                @method("DELETE")
+                <input name="id" type="hidden" value="{{ $category->id }}" />
+                <div class="modal" data-modal="true" id="daily_expense_clear">
+                  <div class="modal-content max-w-[600px] top-[20%]">
+                    <div class="modal-body text-center">
+                      <i class="ki-duotone ki-trash text-info text-2xl"></i>
+                      <p class="mb-4 text-white">
+                        Are you sure you want to clear your expenses from today?
+                      </p>
+                      <div class="flex justify-center items-center space-x-4">
+                        <button
+                          data-modal-dismiss="true"
+                          type="button"
+                          class="btn btn-outline btn-info"
+                        >
+                          No, cancel
+                        </button>
+                        <button
+                          type="submit"
+                          class="btn btn-outline btn-danger"
+                        >
+                          Yes, submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         @endforeach

@@ -14,7 +14,9 @@ class FinanceCategory extends Model
     protected $fillable = [
         'name',
         'description',
-        'amount',
+        'daily_amount',
+        'monthly_average',
+        'total_amount',
         'user_id',
     ];
 
