@@ -24,4 +24,16 @@ class FinanceCategory extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function updateDailyAmounts()
+    {
+        $financeCategories = self::all();
+        foreach ($financeCategories as $financeCategory) {
+            if ($financeCategory->daily_amount != 0) {
+                $totalAmount = $financeCategory->total_amount;
+                $financeCategory->total_amount = $totalAmount + $financeCategory->daily_amount;
+                $financeCategory->save();
+            }
+        }
+    }
 }

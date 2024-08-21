@@ -13,9 +13,94 @@
         <button class="btn btn-outline btn-info" data-modal-toggle="#modal_2">
           New Category Item
         </button>
-        <button class="btn btn-outline btn-info" data-modal-toggle="#modal_3">
-          New Budget
-        </button>
+        @if (Auth::user()->finance_id != null &&$finance->income != 0 &&DB::table("finance_categories")->where("user_id", Auth::id())->count() > 0)
+          <button class="btn btn-outline btn-info" data-modal-toggle="#modal_3">
+            New Budget
+          </button>
+          <div class="modal" data-modal="true" id="modal_3">
+            <div class="modal-content max-w-[600px] top-[20%]">
+              <div class="modal-body">
+                @foreach ($financeCategory as $index => $financeCategoryRange)
+                  <div class="w-full">
+                    <div class="rounded-lg shadow-lg p-6 w-full max-w-md">
+                      <h2 class="text-white text-2xl font-bold mb-4">
+                        {{ $financeCategoryRange->name }}
+                      </h2>
+                      <div class="mb-4">
+                        <label
+                          for="price-range-{{ $index }}"
+                          class="block text-gray-700 font-bold mb-2"
+                        >
+                          Price Range
+                        </label>
+                        <input
+                          type="range"
+                          id="price-range-{{ $index }}"
+                          class="price-range w-full accent-indigo-600"
+                          min="0"
+                          max="{{ $finance->income - $finance->fixed_costs }}"
+                          value="0"
+                          oninput="updateSliders({{ $index }}, this.value)"
+                        />
+                      </div>
+                      <div class="flex justify-between text-gray-500">
+                        <span id="minPrice-{{ $index }}">Є0</span>
+                        <span
+                          data-tooltip="#custom_tooltip"
+                          id="maxPrice-{{ $index }}"
+                        >
+                          Є{{ $finance->income - $finance->fixed_costs }}
+                        </span>
+                        <div
+                          class="hidden rounded-xl shadow-default p-3 bg-light border border-gray-200 text-gray-700 text-xs font-normal"
+                          id="custom_tooltip"
+                        >
+                          This is the amount remaining after deducting fixed
+                          costs from income.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          </div>
+
+          <script>
+            const income = {{ $finance->income - $finance->fixed_costs }};
+            const sliders = document.querySelectorAll('.price-range');
+            const totalSliders = sliders.length;
+
+            function updateSliders(changedIndex, newValue) {
+              sliders[changedIndex].value = newValue;
+
+              let totalValue = 0;
+              sliders.forEach((slider) => {
+                totalValue += parseFloat(slider.value);
+              });
+
+              if (totalValue > income) {
+                let excess = totalValue - income;
+
+                sliders.forEach((slider, index) => {
+                  if (index !== changedIndex && excess > 0) {
+                    const sliderValue = parseFloat(slider.value);
+                    const reduction = Math.min(sliderValue, excess);
+                    slider.value = sliderValue - reduction;
+                    excess -= reduction;
+
+                    document.getElementById(`minPrice-${index}`).textContent =
+                      `$${slider.value}`;
+                  }
+                });
+              }
+
+              document.getElementById(`minPrice-${changedIndex}`).textContent =
+                `$${newValue}`;
+            }
+          </script>
+        @endif
+
         <!-- Modal Structure -->
         <div class="modal" data-modal="true" id="modal_1">
           <div class="modal-content max-w-[600px] top-[20%]">
@@ -237,7 +322,9 @@
     <div class="flex flex-col items-stretch gap-5 lg:gap-7.5">
       <!-- begin: toolbar -->
       <div class="flex flex-wrap items-center gap-5 justify-between">
-        <h3 class="text-lg text-gray-900 font-semibold">6 Connections</h3>
+        <h3 class="text-lg text-gray-900 font-semibold">
+          Your maximum spending limit for today is...
+        </h3>
         <div class="btn-tabs" data-tabs="true">
           <a
             class="btn btn-icon active"
@@ -258,7 +345,110 @@
         class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7.5"
       >
         @foreach ($financeCategory as $category)
-          <div class="card">
+          <div class="card relative">
+            <!-- Dropdown -->
+            <div class="absolute top-4 right-4">
+              <div class="relative inline-block text-left">
+                <div>
+                  <button
+                    id="dropdownMenuButton"
+                    onclick="toggleDropdown('{{ $category->id }}')"
+                    class="inline-flex justify-center w-full text-sm font-medium text-gray-500 hover:text-gray-700"
+                  >
+                    <i class="ki-filled ki-dots-vertical"></i>
+                  </button>
+                </div>
+                <!-- Dropdown Menu -->
+                <div
+                  id="dropdownMenu_{{ $category->id }}"
+                  class="hidden absolute right-0 z-10 mt-2 w-36 border border-gray-200 rounded-lg shadow-lg"
+                >
+                  <div class="flex flex-col justify-center m-5 space-y-2">
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Edit
+                    </a>
+                    <button
+                      class="btn btn-outline btn-danger w-full"
+                      data-modal-toggle="#delete_category_{{ $category->id }}"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Modal -->
+                <div
+                  class="modal hidden z-50"
+                  data-modal="true"
+                  id="delete_category_{{ $category->id }}"
+                >
+                  <div class="modal-content max-w-[600px] top-[20%]">
+                    <div class="modal-body text-center">
+                      <i class="ki-duotone ki-trash text-info text-2xl"></i>
+                      <p class="mb-4 text-white">
+                        Are you sure you want to delete this category?
+                      </p>
+                      <div class="flex justify-center items-center space-x-4">
+                        <button
+                          data-modal-dismiss="true"
+                          type="button"
+                          class="btn btn-outline btn-info"
+                        >
+                          No, cancel
+                        </button>
+
+                        <!-- Delete Form -->
+                        <form
+                          method="POST"
+                          action="{{ route("finance.category.deleteCategory", $category->id) }}"
+                          class="inline"
+                        >
+                          @csrf
+                          @method("DELETE")
+                          <button
+                            type="submit"
+                            class="btn btn-outline btn-danger"
+                          >
+                            Yes, delete
+                          </button>
+                          <input
+                            name="id"
+                            type="hidden"
+                            value="{{ $category->id }}"
+                          />
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  function toggleDropdown(id) {
+                    var dropdown = document.getElementById(
+                      'dropdownMenu_' + id
+                    );
+                    dropdown.classList.toggle('hidden');
+                  }
+
+                  // Dismiss modal
+                  document
+                    .querySelectorAll('[data-modal-dismiss="true"]')
+                    .forEach(function (button) {
+                      button.addEventListener('click', function () {
+                        const modal = document.getElementById(
+                          'delete_category_{{ $category->id }}'
+                        );
+                        modal.classList.add('hidden');
+                      });
+                    });
+                </script>
+              </div>
+            </div>
+
+            <!-- Card Content -->
             <div class="card-body lg:pt-9 lg:pb-7.5">
               <div class="flex justify-center mb-2.5">
                 <div class="size-20 relative">
@@ -329,6 +519,7 @@
                 </div>
               </div>
             </div>
+
             <div class="card-footer justify-center">
               <button
                 class="btn btn-outline btn-info"
@@ -336,6 +527,7 @@
               >
                 Add Today's Expense
               </button>
+
               <div class="modal" data-modal="true" id="modal_4">
                 <div class="modal-content max-w-[600px] top-[20%]">
                   <div class="modal-body">
@@ -372,7 +564,6 @@
                             </span>
                           </div>
                         </div>
-                        <!-- Button -->
                         <div class="flex justify-end mt-4">
                           <button
                             type="submit"
@@ -386,7 +577,7 @@
                   </div>
                 </div>
               </div>
-              <!-- Modal toggle -->
+
               <div class="flex justify-center m-5">
                 <button
                   class="btn btn-outline btn-danger"
@@ -396,14 +587,12 @@
                 </button>
               </div>
 
-              <!-- Main modal -->
               <form
                 method="POST"
                 action="{{ route("finance.category.clearDailyExpense") }}"
               >
                 @csrf
                 @method("DELETE")
-                <input name="id" type="hidden" value="{{ $category->id }}" />
                 <div class="modal" data-modal="true" id="daily_expense_clear">
                   <div class="modal-content max-w-[600px] top-[20%]">
                     <div class="modal-body text-center">

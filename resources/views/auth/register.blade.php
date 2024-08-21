@@ -54,12 +54,7 @@
               <span class="text-2sm text-gray-600 me-1.5">
                 Already have an Account ?
               </span>
-              <a
-                class="text-2sm link"
-                href="html/demo1/authentication/classic/sign-in.html"
-              >
-                Sign In
-              </a>
+              <a class="text-2sm link" href="{{ route("login") }}">Sign In</a>
             </div>
           </div>
           <div class="grid grid-cols-2 gap-2.5">

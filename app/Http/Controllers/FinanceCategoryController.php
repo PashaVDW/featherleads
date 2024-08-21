@@ -43,4 +43,11 @@ class FinanceCategoryController extends Controller
 
         return redirect()->route('finance.index')->with('success', 'Daily expenses have successfully been reset');
     }
+
+    public function deleteCategory(Request $request)
+    {
+        FinanceCategory::destroy($request['id']);
+
+        return redirect()->route('finance.index')->with('success', 'Category deleted successfully!');
+    }
 }

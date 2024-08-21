@@ -11,7 +11,7 @@ class FinanceController extends Controller
 {
     public function index()
     {
-        $finance = Finance::all();
+        $finance = Finance::findOrFail(Auth::user()->finance_id);
         $financeCategory = FinanceCategory::all();
 
         return view('finance.index', compact('finance', 'financeCategory'));
