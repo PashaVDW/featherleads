@@ -7,39 +7,37 @@
     id="sidebar"
   >
     <div
-      class="sidebar-header hidden lg:flex items-center relative justify-between px-3 lg:px-6 shrink-0"
+      class="sidebar-header hidden lg:flex items-center justify-between px-3 lg:px-6 shrink-0"
       id="sidebar_header"
     >
-      <a class="dark:hidden" href="html/demo1.html">
-        <img
-          class="default-logo min-h-[22px] max-w-none"
-          src="assets/media/app/default-logo.svg"
-        />
-        <img
-          class="small-logo min-h-[22px] max-w-none"
-          src="assets/media/app/mini-logo.svg"
-        />
-      </a>
-      <a class="hidden dark:block" href="html/demo1.html">
-        <img
-          class="default-logo min-h-[22px] max-w-none"
-          src="assets/media/app/default-logo-dark.svg"
-        />
-        <img
-          class="small-logo min-h-[22px] max-w-none"
-          src="assets/media/app/mini-logo.svg"
-        />
-      </a>
-      <button
-        class="btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-200 dark:border-gray-300 bg-light text-gray-500 hover:text-gray-700 toggle absolute left-full top-2/4 -translate-x-2/4 -translate-y-2/4"
-        data-toggle="body"
-        data-toggle-class="sidebar-collapse"
-        id="sidebar_toggle"
-      >
-        <i
-          class="ki-filled ki-black-left-line toggle-active:rotate-180 transition-all duration-300"
-        ></i>
-      </button>
+      <div class="flex items-center space-x-4 mt-4">
+        <svg
+          width="35"
+          height="70"
+          viewBox="0 0 70 70"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="transform: scale(-1, 1)"
+        >
+          <path
+            d="M58.193 26.8815C53.1408 29.3081 48.0945 28.3472 48.0945 28.3472C48.0945 28.3472 57.2778 25.4223 58.9608 20.2805C60.8937 14.3752 60.0041 9.482 57.3352 3C53.1408 16.3446 34.6925 17.8888 27.6272 25.9844C24.5124 29.5538 23.2109 34.551 22.8294 36.4573C22.0668 35.0276 21.7023 33.319 22.2097 31.3575C17.8729 36.8386 14.6794 41.8904 12.5397 54.7255C20.7082 40.7281 36.232 29.5607 36.232 29.5607C36.232 29.5607 42.9222 24.7176 45.976 21.6851C40.3878 27.8571 34.146 32.6968 27.2471 39.5488C20.3882 46.4843 12.7985 57.5948 10 66.1985C12.0245 63.1159 14.9494 59.8198 18.9532 56.3155C22.9571 52.8114 30.9 58.6028 42.6262 49.8376C36.8099 51.9942 32.3613 51.1686 29.2476 50.5965C42.6262 49.8376 56.5729 40.9372 58.193 26.8815Z"
+            fill="#883efe"
+          />
+        </svg>
+        <span class="text-xl font-semibold text-white">FeatherLeads</span>
+        <svg
+          width="35"
+          height="70"
+          viewBox="0 0 70 70"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M58.193 26.8815C53.1408 29.3081 48.0945 28.3472 48.0945 28.3472C48.0945 28.3472 57.2778 25.4223 58.9608 20.2805C60.8937 14.3752 60.0041 9.482 57.3352 3C53.1408 16.3446 34.6925 17.8888 27.6272 25.9844C24.5124 29.5538 23.2109 34.551 22.8294 36.4573C22.0668 35.0276 21.7023 33.319 22.2097 31.3575C17.8729 36.8386 14.6794 41.8904 12.5397 54.7255C20.7082 40.7281 36.232 29.5607 36.232 29.5607C36.232 29.5607 42.9222 24.7176 45.976 21.6851C40.3878 27.8571 34.146 32.6968 27.2471 39.5488C20.3882 46.4843 12.7985 57.5948 10 66.1985C12.0245 63.1159 14.9494 59.8198 18.9532 56.3155C22.9571 52.8114 30.9 58.6028 42.6262 49.8376C36.8099 51.9942 32.3613 51.1686 29.2476 50.5965C42.6262 49.8376 56.5729 40.9372 58.193 26.8815Z"
+            fill="#883efe"
+          />
+        </svg>
+      </div>
     </div>
     @include("partials.sidebar")
   </div>

@@ -364,7 +364,9 @@
                                 Tyler Hero
                               </a>
                               <span class="text-2sm font-normal text-gray-500">
-                                tyler.hero @gmail.com connections
+                                tyler.hero
+                                @gmail.com
+                                connections
                               </span>
                             </div>
                           </div>
@@ -401,7 +403,9 @@
                                 Esther Howard
                               </a>
                               <span class="text-2sm font-normal text-gray-500">
-                                esther.howard @gmail.com connections
+                                esther.howard
+                                @gmail.com
+                                connections
                               </span>
                             </div>
                           </div>
@@ -798,7 +802,9 @@
                             Tyler Hero
                           </a>
                           <span class="text-2sm font-normal text-gray-500">
-                            tyler.hero @gmail.com connections
+                            tyler.hero
+                            @gmail.com
+                            connections
                           </span>
                         </div>
                       </div>
@@ -833,7 +839,9 @@
                             Esther Howard
                           </a>
                           <span class="text-2sm font-normal text-gray-500">
-                            esther.howard @gmail.com connections
+                            esther.howard
+                            @gmail.com
+                            connections
                           </span>
                         </div>
                       </div>
@@ -868,7 +876,9 @@
                             Jacob Jones
                           </a>
                           <span class="text-2sm font-normal text-gray-500">
-                            jacob.jones @gmail.com connections
+                            jacob.jones
+                            @gmail.com
+                            connections
                           </span>
                         </div>
                       </div>
@@ -903,7 +913,9 @@
                             TLeslie Alexander
                           </a>
                           <span class="text-2sm font-normal text-gray-500">
-                            leslie.alexander @gmail.com connections
+                            leslie.alexander
+                            @gmail.com
+                            connections
                           </span>
                         </div>
                       </div>
