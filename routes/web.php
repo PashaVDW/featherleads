@@ -18,6 +18,7 @@ Route::middleware('auth')->controller(\App\Http\Controllers\FinanceCategoryContr
     Route::post('/finance/category/addDailyExpense', 'addDailyExpense')->name('addDailyExpense');
     Route::delete('/finance/category/clearDailyExpense', 'clearDailyExpense')->name('clearDailyExpense');
     Route::delete('/finance/category/deleteCategory', 'deleteCategory')->name('deleteCategory');
+    Route::post('/finance/category/updateBudgets', 'updateBudgets')->name('updateBudgets');
 });
 
 Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');

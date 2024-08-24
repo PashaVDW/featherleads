@@ -50,4 +50,17 @@ class FinanceCategoryController extends Controller
 
         return redirect()->route('finance.index')->with('success', 'Category deleted successfully!');
     }
+
+    public function updateBudgets(Request $request)
+    {
+        for ($i = 0; $i < count($request['categoryId']); $i++) {
+            if ($request['categoryId'][$i] >= 0) {
+                $financeCategory = FinanceCategory::findOrFail($request['categoryId'][$i]);
+                $financeCategory->budget = $request['price_ranges'][$i];
+                $financeCategory->save();
+            }
+        }
+
+        return redirect()->route('finance.index')->with('success', 'Budget(s) has been updated successfully!');
+    }
 }
