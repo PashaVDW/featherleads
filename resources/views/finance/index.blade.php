@@ -14,19 +14,23 @@
           New Category Item
         </button>
         @if (Auth::user()->finance_id != null &&$finance->income != 0 &&DB::table("finance_categories")->where("user_id", Auth::id())->count() > 0)
-              <button
-                  class="btn btn-outline btn-info"
-                  data-modal-toggle="#modal_3"
-              >
-                  New Budget
-              </button>
-          <form action="{{ route('finance.category.updateBudgets') }}" method="POST">
+          <button class="btn btn-outline btn-info" data-modal-toggle="#modal_3">
+            New Budget
+          </button>
+          <form
+            action="{{ route("finance.category.updateBudgets") }}"
+            method="POST"
+          >
             @csrf
             <div class="modal" data-modal="true" id="modal_3">
               <div class="modal-content max-w-[600px] top-[20%]">
                 <div class="modal-body">
                   @foreach ($financeCategory as $index => $financeCategoryRange)
-                    <input type="hidden" name="categoryId[{{ $index }}]" value="{{ $financeCategoryRange->id }}">
+                    <input
+                      type="hidden"
+                      name="categoryId[{{ $index }}]"
+                      value="{{ $financeCategoryRange->id }}"
+                    />
                     <div class="w-full">
                       <div class="rounded-lg shadow-lg p-6 w-full max-w-md">
                         <h2 class="text-white text-2xl font-bold mb-4">
@@ -51,7 +55,9 @@
                           />
                         </div>
                         <div class="flex justify-between text-gray-500">
-                            <span id="minPrice-{{ $index }}">Є{{ $financeCategoryRange->budget }}</span>
+                          <span id="minPrice-{{ $index }}">
+                            Є{{ $financeCategoryRange->budget }}
+                          </span>
                           <span
                             data-tooltip="#custom_tooltip"
                             id="maxPrice-{{ $index }}"
@@ -70,47 +76,47 @@
                     </div>
                   @endforeach
                 </div>
-                  <div class="modal-footer flex justify-end">
-                      <button type="submit" class="btn btn-outline btn-info">
-                          Submit
-                      </button>
+                <div class="modal-footer flex justify-end">
+                  <button type="submit" class="btn btn-outline btn-info">
+                    Submit
+                  </button>
                 </div>
               </div>
             </div>
           </form>
-              <script>
-                  const income = {{ $finance->income - $finance->fixed_costs }};
-                  const sliders = document.querySelectorAll('.price-range');
-                  const totalSliders = sliders.length;
+          <script>
+            const income = {{ $finance->income - $finance->fixed_costs }};
+            const sliders = document.querySelectorAll('.price-range');
+            const totalSliders = sliders.length;
 
-                  function updateSliders(changedIndex, newValue) {
-                      sliders[changedIndex].value = newValue;
+            function updateSliders(changedIndex, newValue) {
+              sliders[changedIndex].value = newValue;
 
-                      let totalValue = 0;
-                      sliders.forEach((slider) => {
-                          totalValue += parseFloat(slider.value);
-                      });
+              let totalValue = 0;
+              sliders.forEach((slider) => {
+                totalValue += parseFloat(slider.value);
+              });
 
-                      if (totalValue > income) {
-                          let excess = totalValue - income;
+              if (totalValue > income) {
+                let excess = totalValue - income;
 
-                          sliders.forEach((slider, index) => {
-                              if (index !== changedIndex && excess > 0) {
-                                  const sliderValue = parseFloat(slider.value);
-                                  const reduction = Math.min(sliderValue, excess);
-                                  slider.value = sliderValue - reduction;
-                                  excess -= reduction;
+                sliders.forEach((slider, index) => {
+                  if (index !== changedIndex && excess > 0) {
+                    const sliderValue = parseFloat(slider.value);
+                    const reduction = Math.min(sliderValue, excess);
+                    slider.value = sliderValue - reduction;
+                    excess -= reduction;
 
-                                  document.getElementById(`minPrice-${index}`).textContent =
-                                      `€${slider.value}`;
-                              }
-                          });
-                      }
-
-                      document.getElementById(`minPrice-${changedIndex}`).textContent =
-                          `€${newValue}`;
+                    document.getElementById(`minPrice-${index}`).textContent =
+                      `€${slider.value}`;
                   }
-              </script>
+                });
+              }
+
+              document.getElementById(`minPrice-${changedIndex}`).textContent =
+                `€${newValue}`;
+            }
+          </script>
         @endif
 
         <!-- Modal Structure -->
@@ -175,7 +181,8 @@
                         value="{{ old("fixed_costs") }}"
                       />
                       <span class="form-hint">
-                        Enter the amount of fixed costs. (e.g. rent / subscriptions)
+                        Enter the amount of fixed costs. (e.g. rent /
+                        subscriptions)
                       </span>
                       <span
                         class="text-red-500 text-sm error-message"
@@ -499,20 +506,18 @@
               <div
                 class="flex items-center justify-center flex-wrap gap-2 lg:gap-5"
               >
-                  <div
-                      class="grid grid-cols-1 gap-1.5 border-[0.5px] border-dashed border-gray-400 rounded-md px-2.5 py-2 shrink-0 min-w-24 max-w-auto"
-                  >
+                <div
+                  class="grid grid-cols-1 gap-1.5 border-[0.5px] border-dashed border-gray-400 rounded-md px-2.5 py-2 shrink-0 min-w-24 max-w-auto"
+                >
                   <span
-                      class="text-gray-900 text-2sm leading-none font-semibold"
+                    class="text-gray-900 text-2sm leading-none font-semibold"
                   >
                     €{{ $category->budget }}
                   </span>
-                      <span class="text-gray-600 text-xs font-medium">
-                    Budget
-                  </span>
-                  </div>
+                  <span class="text-gray-600 text-xs font-medium">Budget</span>
+                </div>
 
-                  <div
+                <div
                   class="grid grid-cols-1 gap-1.5 border-[0.5px] border-dashed border-gray-400 rounded-md px-2.5 py-2 shrink-0 min-w-24 max-w-auto"
                 >
                   <span

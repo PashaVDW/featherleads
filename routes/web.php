@@ -1,12 +1,17 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\SalesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
-Route::resource('leads', LeadController::class)->middleware('auth');
+Route::resource('prospects', ProspectController::class)->middleware('auth');
+
+Route::middleware('auth')->name('sales.')->group(function () {
+    Route::get('/sales', [SalesController::class, 'index'])->name('index');
+});
 
 Route::middleware('auth')->controller(\App\Http\Controllers\FinanceController::class)->name('finance.')->group(function () {
     Route::get('/finance', 'index')->name('index');

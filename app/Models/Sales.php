@@ -7,17 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Lead extends Model
+class Sales extends Model
 {
     use HasFactory, UUID;
 
     protected $fillable = [
-        'company_name',
-        'user_id',
-        'name',
-        'email',
-        'phone',
-        'type',
+        'yes_amount',
+        'no_amount',
+        'calls_amount',
+        'follow_through_amount',
+        'target_amount',
+        'cost_per_customer',
+        'sold',
     ];
 
     public function user(): BelongsTo

@@ -2,7 +2,7 @@
 
 @section("content")
   <form
-    action="{{ route("leads.update", $lead) }}"
+    action="{{ route("prospects.update", $lead) }}"
     class="w-full flex flex-col gap-4"
     method="POST"
   >

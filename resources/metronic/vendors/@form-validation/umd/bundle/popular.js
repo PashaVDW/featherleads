@@ -1208,7 +1208,7 @@
     	            // User is making cross domain request
     	            var script_1 = document.createElement('script');
     	            // In some very fast systems, the different `Date.now()` invocations can return the same value
-    	            // which leads to the issue where there are multiple remove validators are used, for example.
+    	            // which prospects to the issue where there are multiple remove validators are used, for example.
     	            // Appending it with a generated random string can fix the value
     	            var callback_1 = "___FormValidationFetch_".concat(generateString(12), "___");
     	            window[callback_1] = function (data) {

@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lead;
+use App\Models\Prospect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LeadController extends Controller
+class ProspectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('leads.index', ['leads' => Lead::all()]);
+        return view('prospects.index', ['prospects' => Prospect::all()]);
     }
 
     /**
@@ -21,7 +21,7 @@ class LeadController extends Controller
      */
     public function create()
     {
-        return view('leads.create');
+        return view('prospects.create');
     }
 
     /**
@@ -38,9 +38,9 @@ class LeadController extends Controller
 
         $validated['user_id'] = Auth::id();
 
-        Lead::create($validated);
+        Prospect::create($validated);
 
-        return redirect()->route('leads.index')->with('success', 'Lead record updated successfully!');
+        return redirect()->route('prospects.index')->with('success', 'Prospect record updated successfully!');
     }
 
     /**
@@ -56,9 +56,9 @@ class LeadController extends Controller
      */
     public function edit(string $id)
     {
-        $lead = Lead::findOrFail($id);
+        $prospect = Prospect::findOrFail($id);
 
-        return view('leads.edit', ['lead' => $lead]);
+        return view('prospects.edit', ['prospect' => $prospect]);
     }
 
     /**
@@ -75,10 +75,10 @@ class LeadController extends Controller
         ]);
         $validated['user_id'] = Auth::id();
 
-        $lead = Lead::findOrFail($id);
+        $lead = Prospect::findOrFail($id);
         $lead->update($validated);
 
-        return redirect('/leads');
+        return redirect('/prospects');
     }
 
     /**
@@ -86,8 +86,8 @@ class LeadController extends Controller
      */
     public function destroy(string $id)
     {
-        Lead::destroy($id);
+        Prospect::destroy($id);
 
-        return redirect('/leads');
+        return redirect('/prospects');
     }
 }

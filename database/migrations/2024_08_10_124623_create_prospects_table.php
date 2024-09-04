@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('leads', function (Blueprint $table) {
+        Schema::create('prospects', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignId('user_id')->constrained();
             $table->string('company_name');
             $table->string('name');
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
-            $table->string('type')->default('cold');
+            $table->string('type')->default('lead');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leads');
+        Schema::dropIfExists('prospects');
     }
 };

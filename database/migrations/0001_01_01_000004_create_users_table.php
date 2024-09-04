@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->uuid('finance_id')->nullable();
+            $table->uuid('sales_id')->nullable();
+            $table->foreign('sales_id')->references('id')->on('sales')->onDelete('set null');
             $table->foreign('finance_id')->references('id')->on('finances')->onDelete('set null');
             $table->rememberToken();
             $table->timestamps();

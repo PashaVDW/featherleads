@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function leads(): HasMany
     {
-        return $this->hasMany(Lead::class);
+        return $this->hasMany(Prospect::class);
     }
 
     public function finance(): HasOne
@@ -61,5 +61,10 @@ class User extends Authenticatable
     public function financeCategories()
     {
         return $this->hasMany(FinanceCategory::class);
+    }
+
+    public function sales(): HasOne
+    {
+        return $this->hasOne(Sales::class);
     }
 }

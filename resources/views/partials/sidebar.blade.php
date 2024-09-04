@@ -32,14 +32,14 @@
           class="menu-label border border-transparent gap-[10px] pl-[10px] pr-[10px] py-[6px]"
           tabindex="0"
         >
-          <a class="menu-link" href="{{ route("leads.index") }}">
+          <a class="menu-link" href="{{ route("sales.index") }}">
             <span
               class="menu-icon items-start text-gray-500 dark:text-gray-400 w-[20px]"
             >
-              <i class="ki-solid ki-users text-info text-md"></i>
+              <i class="ki-solid ki-chart-pie-simple text-info text-md"></i>
             </span>
             <span class="menu-title text-sm font-semibold text-gray-700">
-              Leads
+              Sales Dashboard
             </span>
           </a>
         </div>
@@ -49,14 +49,31 @@
           class="menu-label border border-transparent gap-[10px] pl-[10px] pr-[10px] py-[6px]"
           tabindex="0"
         >
-          <a class="menu-link" href="{{ route("leads.create") }}">
+          <a class="menu-link" href="{{ route("prospects.index") }}">
+            <span
+              class="menu-icon items-start text-gray-500 dark:text-gray-400 w-[20px]"
+            >
+              <i class="ki-solid ki-users text-info text-md"></i>
+            </span>
+            <span class="menu-title text-sm font-semibold text-gray-700">
+              Prospects Overview
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div
+          class="menu-label border border-transparent gap-[10px] pl-[10px] pr-[10px] py-[6px]"
+          tabindex="0"
+        >
+          <a class="menu-link" href="{{ route("prospects.create") }}">
             <span
               class="menu-icon items-start text-gray-500 dark:text-gray-400 w-[20px]"
             >
               <i class="ki-solid ki-user text-info text-md"></i>
             </span>
             <span class="menu-title text-sm font-semibold text-gray-700">
-              Create Lead
+              Create Prospect
             </span>
           </a>
         </div>

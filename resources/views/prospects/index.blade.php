@@ -74,7 +74,7 @@
               </thead>
               <tbody>
                 <tr>
-                  @foreach ($leads as $lead)
+                  @foreach ($prospects as $prospect)
                     <td class="text-center">
                       {{ $lead->company_name }}
                     </td>
@@ -85,7 +85,7 @@
                     <td>
                       <form
                         method="GET"
-                        action="{{ route("leads.edit", $lead->id) }}"
+                        action="{{ route("prospects.edit", $prospect->id) }}"
                       >
                         @csrf
                         <button class="btn btn-sm btn-icon btn-clear btn-light">
@@ -96,7 +96,7 @@
                     <td>
                       <form
                         method="POST"
-                        action="{{ route("leads.destroy", $lead->id) }}"
+                        action="{{ route("prospects.destroy", $prospect->id) }}"
                       >
                         @csrf
                         @method("DELETE")
