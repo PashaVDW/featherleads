@@ -1,6 +1,6 @@
 class KTExamplePieChart {
     static init() {
-        const data = [50, 50];
+        const data = [sold, toGoValue];
         const labels = ['Sold', 'To go'];
         const colors = ['var(--tw-primary)', 'var(--tw-brand)'];
 

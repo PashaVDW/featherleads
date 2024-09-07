@@ -97,8 +97,13 @@
               name="email"
               placeholder="email@email.com"
               type="text"
-              value=""
+              value="{{ old("email") }}"
             />
+            @error("email")
+              <span class="text-danger">
+                {{ $message }}
+              </span>
+            @enderror
           </div>
           <div class="flex flex-col gap-1">
             <div class="flex items-center justify-between gap-1">
@@ -126,6 +131,11 @@
                 ></i>
               </button>
             </label>
+            @error("password")
+              <span class="text-danger">
+                {{ $message }}
+              </span>
+            @enderror
           </div>
           <label class="checkbox-group">
             <input

@@ -50,6 +50,11 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
     rel="stylesheet"
   />
+  <meta
+    http-equiv="”refresh”"
+    content="”{{ config("session.lifetime") * 60 }}”"
+  />
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link href="assets/vendors/apexcharts/apexcharts.css" rel="stylesheet" />
   <link href="assets/vendors/keenicons/styles.bundle.css" rel="stylesheet" />
   <link href="assets/css/styles.css" rel="stylesheet" />

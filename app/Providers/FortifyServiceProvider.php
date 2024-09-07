@@ -43,7 +43,7 @@ class FortifyServiceProvider extends ServiceProvider
         {
             public function toResponse($request)
             {
-                return redirect(route('home'));
+                return redirect(route('home.index'));
             }
         });
 

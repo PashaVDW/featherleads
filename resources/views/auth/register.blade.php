@@ -86,14 +86,34 @@
             <span class="border-t border-gray-200 w-full"></span>
           </div>
           <div class="flex flex-col gap-1">
+            <label class="form-label text-gray-900">Name</label>
+            <input
+              class="input"
+              name="name"
+              placeholder="John Doe"
+              type="text"
+              value="{{ old("name") }}"
+            />
+            @error("name")
+              <span class="text-danger">
+                {{ $message }}
+              </span>
+            @enderror
+          </div>
+          <div class="flex flex-col gap-1">
             <label class="form-label text-gray-900">Email</label>
             <input
               class="input"
               name="email"
               placeholder="email@email.com"
               type="text"
-              value=""
+              value="{{ old("email") }}"
             />
+            @error("email")
+              <span class="text-danger">
+                {{ $message }}
+              </span>
+            @enderror
           </div>
           <div class="flex flex-col gap-1">
             <label class="form-label text-gray-900">Password</label>
@@ -113,6 +133,11 @@
                 ></i>
               </div>
             </label>
+            @error("password")
+              <span class="text-danger">
+                {{ $message }}
+              </span>
+            @enderror
           </div>
           <div class="flex flex-col gap-1">
             <label class="form-label text-gray-900">Confirm Password</label>
@@ -132,6 +157,11 @@
                 ></i>
               </div>
             </label>
+            @error("password_confirmation")
+              <span class="text-danger">
+                {{ $message }}
+              </span>
+            @enderror
           </div>
           <label class="checkbox-group">
             <input

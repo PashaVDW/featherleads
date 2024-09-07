@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('prospects', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
             $table->string('company_name');
             $table->string('name');
             $table->string('email')->unique()->nullable();

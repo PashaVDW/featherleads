@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('finances', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignIdFor(\App\Models\User::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(\App\Models\FinanceCategory::class)->constrained()->cascadeOnDelete();
             $table->decimal('income')->default(0);
             $table->decimal('amount_available')->default(0);
             $table->decimal('savings')->nullable();

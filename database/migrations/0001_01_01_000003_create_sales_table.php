@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignIdFor(\App\Models\User::class)->nullable()->constrained()->nullOnDelete();
             $table->integer('yes_amount')->default(0);
             $table->integer('no_amount')->default(0);
             $table->integer('calls_amount')->default(0);

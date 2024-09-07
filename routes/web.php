@@ -5,12 +5,18 @@ use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\SalesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::middleware('auth')->name('home.')->controller(HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/enroll_sales', 'enrollSales')->name('enrollSales');
+    Route::delete('/unenroll_sales', 'unenrollSales')->name('unenrollSales');
+});
 
 Route::resource('prospects', ProspectController::class)->middleware('auth');
 
-Route::middleware('auth')->name('sales.')->group(function () {
-    Route::get('/sales', [SalesController::class, 'index'])->name('index');
+Route::middleware('auth')->controller(SalesController::class)->name('sales.')->group(function () {
+    Route::get('/sales', 'index')->name('index');
+    Route::post('/sales/set_monthly_target', 'setMonthlyTarget')->name('addTarget');
+    Route::post('sales/setRPC', 'setRPCAmount')->name('setRPCAmount');
 });
 
 Route::middleware('auth')->controller(\App\Http\Controllers\FinanceController::class)->name('finance.')->group(function () {

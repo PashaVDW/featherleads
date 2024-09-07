@@ -11,20 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Users table with UUID as the primary key
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->uuid('finance_id')->nullable();
-            $table->uuid('sales_id')->nullable();
-            $table->foreign('sales_id')->references('id')->on('sales')->onDelete('set null');
-            $table->foreign('finance_id')->references('id')->on('finances')->onDelete('set null');
             $table->rememberToken();
             $table->timestamps();
         });
 
+        // Password reset tokens table
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
@@ -33,11 +31,14 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
+            $table->uuid('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+
+            // Optional foreign key constraint for user_id
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -46,8 +47,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
+        // Dropping the tables when rolling back migrations
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('users');
     }
 };
