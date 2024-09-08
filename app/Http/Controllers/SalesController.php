@@ -15,15 +15,24 @@ class SalesController extends Controller
     public function index(): View
     {
         $sale = Sale::where('user_id', Auth::id())->firstOrFail();
-
         $monthlyData = [];
         $currentMonth = Carbon::now();
+
         for ($i = 0; $i < 12; $i++) {
+            $startOfMonth = $currentMonth->copy()->startOfMonth();
+            $endOfMonth = $currentMonth->copy()->endOfMonth();
+
+            $monthlySale = Sale::where('user_id', Auth::id())
+                ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
+                ->sum('sold');
+
             $monthlyData[] = [
-                'month' => $currentMonth->subMonth()->format('M'),
-                'sold' => $sale->sold,
+                'month' => $currentMonth->format('M'),
+                'sold' => $monthlySale,
                 'target' => $sale->target_amount,
             ];
+
+            $currentMonth->subMonth();
         }
 
         return view('sales.index', [
