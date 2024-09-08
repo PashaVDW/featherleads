@@ -20,7 +20,7 @@ class HomeController extends Controller
         $financeCategory = FinanceCategory::create();
 
         Finance::create([
-           'user_id' => $user->id,
+            'user_id' => $user->id,
             'finance_category_id' => $financeCategory->id,
         ]);
 

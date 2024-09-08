@@ -59,23 +59,21 @@ class SalesController extends Controller
     private function generateMonthlyData(): array
     {
         $monthlyData = [];
-        $currentMonth = Carbon::now();
+        $year = Carbon::now()->year;
 
-        for ($i = 0; $i < 12; $i++) {
-            $startOfMonth = $currentMonth->copy()->startOfMonth();
-            $endOfMonth = $currentMonth->copy()->endOfMonth();
+        for ($month = 1; $month <= 12; $month++) {
+            $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfMonth();
+            $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth();
 
             $monthlySale = Sale::where('user_id', Auth::id())
                 ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
                 ->sum('sold');
 
             $monthlyData[] = [
-                'month' => $currentMonth->format('M'),
+                'month' => $startOfMonth->format('M'),
                 'sold' => $monthlySale,
                 'target' => $this->sale->target_amount,
             ];
-
-            $currentMonth->subMonth();
         }
 
         return $monthlyData;

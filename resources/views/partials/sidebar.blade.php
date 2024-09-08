@@ -81,33 +81,33 @@
         </div>
       @endif
 
-        @if (App\Models\Finance::where("user_id", Auth::user()->id)->exists())
-            <div class="menu-item pt-2.25 pb-px">
-            <span
-              class="menu-heading uppercase text-2sm font-semibold text-gray-500 pl-[10px] pr-[10px]"
-            >
-              <i class="ki-filled ki-financial-schedule text-info text-md"></i>
-              Financial Management
-            </span>
+      @if (App\Models\Finance::where("user_id", Auth::user()->id)->exists())
+        <div class="menu-item pt-2.25 pb-px">
+          <span
+            class="menu-heading uppercase text-2sm font-semibold text-gray-500 pl-[10px] pr-[10px]"
+          >
+            <i class="ki-filled ki-financial-schedule text-info text-md"></i>
+            Financial Management
+          </span>
+        </div>
+        <div class="menu-item">
+          <div
+            class="menu-label border border-transparent gap-[10px] pl-[10px] pr-[10px] py-[6px]"
+            tabindex="0"
+          >
+            <a class="menu-link" href="{{ route("finance.index") }}">
+              <span
+                class="menu-icon items-start text-gray-500 dark:text-gray-400 w-[20px]"
+              >
+                <i class="ki-filled ki-graph-2 text-info text-md"></i>
+              </span>
+              <span class="menu-title text-sm font-semibold text-gray-700">
+                Finance Overview
+              </span>
+            </a>
           </div>
-            <div class="menu-item">
-            <div
-              class="menu-label border border-transparent gap-[10px] pl-[10px] pr-[10px] py-[6px]"
-              tabindex="0"
-            >
-              <a class="menu-link" href="{{ route("finance.index") }}">
-                <span
-                  class="menu-icon items-start text-gray-500 dark:text-gray-400 w-[20px]"
-                >
-                  <i class="ki-filled ki-graph-2 text-info text-md"></i>
-                </span>
-                <span class="menu-title text-sm font-semibold text-gray-700">
-                  Finance Overview
-                </span>
-              </a>
-            </div>
-          </div>
-        @endif
+        </div>
+      @endif
     </div>
   </div>
 </div>
