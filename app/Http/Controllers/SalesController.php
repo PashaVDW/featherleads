@@ -6,6 +6,7 @@ use App\Http\Requests\RPCRequest;
 use App\Http\Requests\SalesMonthlyTargetRequest;
 use App\Models\Sale;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -15,10 +16,21 @@ class SalesController extends Controller
     {
         $sale = Sale::where('user_id', Auth::id())->firstOrFail();
 
+        $monthlyData = [];
+        $currentMonth = Carbon::now();
+        for ($i = 0; $i < 12; $i++) {
+            $monthlyData[] = [
+                'month' => $currentMonth->subMonth()->format('M'),
+                'sold' => $sale->sold,
+                'target' => $sale->target_amount,
+            ];
+        }
+
         return view('sales.index', [
             'sale' => $sale,
             'toGoValue' => $sale->target_amount - $sale->sold,
             'sold' => $sale->sold,
+            'monthlyData' => $monthlyData,
         ]);
     }
 

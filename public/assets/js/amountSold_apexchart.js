@@ -1,12 +1,13 @@
 class KTExampleAreaChart {
     static init() {
-        const data = [750, 250, 450, 150, 850, 350, 700, 250, 350, 150, 450, 300]; // Data multiplied by 10
-        const categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        // Data passed from the Blade view
+        let salesData = window.salesData;
+        let categories = window.categories;
 
         const options = {
             series: [{
-                name: 'series1',
-                data: data
+                name: 'Sales',
+                data: salesData
             }],
             chart: {
                 height: 250,
@@ -61,8 +62,8 @@ class KTExampleAreaChart {
             },
             yaxis: {
                 min: 0,
-                max: 1500,
-                tickAmount: 5, // This will create 5 ticks: 0, 20, 40, 60, 80, 100
+                max: Math.max(1500),
+                tickAmount: 5,
                 axisTicks: {
                     show: false
                 },
@@ -79,9 +80,8 @@ class KTExampleAreaChart {
             tooltip: {
                 enabled: true,
                 custom({series, seriesIndex, dataPointIndex, w}) {
-                    const number = parseInt(series[seriesIndex][dataPointIndex]);
-                    const month = w.globals.seriesX[seriesIndex][dataPointIndex];
-                    const monthName = categories[month];
+                    const number = series[seriesIndex][dataPointIndex];
+                    const monthName = categories[dataPointIndex];
 
                     const formatter = new Intl.NumberFormat('en-US', {
                         style: 'currency',
@@ -90,8 +90,7 @@ class KTExampleAreaChart {
 
                     const formattedNumber = formatter.format(number);
 
-                    return (
-                        `
+                    return `
 <div class="flex flex-col gap-2 p-3.5">
  <div class="font-medium text-2sm text-gray-600">
   ${monthName}, 2024 Sales
@@ -104,9 +103,7 @@ class KTExampleAreaChart {
    +24%
   </span>
  </div>
-</div>
-`
-                    );
+</div>`;
                 }
             },
             markers: {
