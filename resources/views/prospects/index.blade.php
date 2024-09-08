@@ -1,6 +1,26 @@
 @extends("index")
 
 @section("content")
+  <form method="GET" action="{{ route("prospects.index") }}">
+    <div class="flex gap-2 items-center mb-4">
+      <select name="filter" class="select select-xs w-[80px]">
+        <option value="">Filter</option>
+        <option value="yes" {{ request("filter") == "yes" ? "selected" : "" }}>
+          Yes
+        </option>
+        <option value="no" {{ request("filter") == "no" ? "selected" : "" }}>
+          No
+        </option>
+        <option
+          value="acquired"
+          {{ request("filter") == "acquired" ? "selected" : "" }}
+        >
+          Acquired
+        </option>
+      </select>
+      <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+    </div>
+  </form>
   <div class="grid">
     <div class="card card-grid min-w-full">
       <div class="card-header py-5 flex-wrap">
@@ -73,15 +93,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  @foreach ($prospects as $prospect)
+                @foreach ($prospects as $prospect)
+                  <tr>
                     <td class="text-center">
-                      {{ $lead->company_name }}
+                      {{ $prospect->company_name }}
                     </td>
-                    <td>{{ $lead->name }}</td>
-                    <td>{{ $lead->type }}</td>
-                    <td>{{ $lead->email }}</td>
-                    <td>{{ $lead->phone }}</td>
+                    <td>{{ $prospect->name }}</td>
+                    <td>{{ $prospect->type }}</td>
+                    <td>{{ $prospect->email }}</td>
+                    <td>{{ $prospect->phone }}</td>
                     <td>
                       <form
                         method="GET"
@@ -105,8 +125,8 @@
                         </button>
                       </form>
                     </td>
-                  @endforeach
-                </tr>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

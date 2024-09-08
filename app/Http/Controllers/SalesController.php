@@ -16,7 +16,8 @@ class SalesController extends Controller
         $sale = Sale::where('user_id', Auth::id())->firstOrFail();
 
         return view('sales.index', [
-            'toGoValue' => $sale->target_amount,
+            'sale' => $sale,
+            'toGoValue' => $sale->target_amount - $sale->sold,
             'sold' => $sale->sold,
         ]);
     }
@@ -30,6 +31,17 @@ class SalesController extends Controller
         ]);
 
         return redirect()->route('sales.index')->with('success', 'Monthly Target updated successfully!');
+    }
+
+    public function addSale()
+    {
+        $sale = Sale::where('user_id', Auth::id())->firstOrFail();
+
+        $sale->update([
+            'sold' => ($sale->sold + $sale->cost_per_customer),
+        ]);
+
+        return redirect()->route('sales.index')->with('success', 'Sale added successfully!');
     }
 
     public function setRPCAmount(RPCRequest $request): RedirectResponse

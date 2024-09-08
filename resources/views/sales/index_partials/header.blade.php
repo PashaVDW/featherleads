@@ -10,13 +10,33 @@
       Here you can sort by daily, weekly, or monthly.
     </div>
 
-    <button class="btn btn-outline btn-info" data-modal-toggle="#modal_2">
+    <button
+      class="btn btn-outline btn-info"
+      data-modal-toggle="#modal_2"
+      data-tooltip="#monthlyTarget"
+    >
       Monthly Target
     </button>
-    <button class="btn btn-outline btn-info" data-modal-toggle="#modal_1">
+    <div
+      class="hidden rounded-xl shadow-default p-3 bg-light border border-gray-200 text-gray-700 text-xs font-normal"
+      id="monthlyTarget"
+    >
+      Here you can set your Monthly Target.
+    </div>
+
+    <button
+      class="btn btn-outline btn-info"
+      data-modal-toggle="#modal_1"
+      data-tooltip="#rpc"
+    >
       RPC
     </button>
-
+    <div
+      class="hidden rounded-xl shadow-default p-3 bg-light border border-gray-200 text-gray-700 text-xs font-normal"
+      id="rpc"
+    >
+      Here you can set your RPC (Revenue Per Customer).
+    </div>
     @include("sales.index_partials.monthly_target")
     @include("sales.index_partials.rpc")
 

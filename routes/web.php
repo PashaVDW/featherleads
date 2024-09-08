@@ -16,7 +16,8 @@ Route::resource('prospects', ProspectController::class)->middleware('auth');
 Route::middleware('auth')->controller(SalesController::class)->name('sales.')->group(function () {
     Route::get('/sales', 'index')->name('index');
     Route::post('/sales/set_monthly_target', 'setMonthlyTarget')->name('addTarget');
-    Route::post('sales/setRPC', 'setRPCAmount')->name('setRPCAmount');
+    Route::post('/sales/setRPC', 'setRPCAmount')->name('setRPCAmount');
+    Route::post('/sales/addSale', 'addSale')->name('addSale');
 });
 
 Route::middleware('auth')->controller(\App\Http\Controllers\FinanceController::class)->name('finance.')->group(function () {

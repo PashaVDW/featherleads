@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProspectRequest;
 use App\Models\Prospect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,34 +12,26 @@ class ProspectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('prospects.index', ['prospects' => Prospect::all()]);
-    }
+        $filter = $request->input('filter');
+        $prospects = Prospect::query();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('prospects.create');
+        if ($filter) {
+            $prospects->where('type', $filter);
+        }
+        $prospects = $prospects->get();
+
+        // Return the view with filtered prospects and the selected filter
+        return view('prospects.index', ['prospects' => $prospects, 'filter' => $filter]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateProspectRequest $request)
     {
-        $validated = $request->validate([
-            'company_name' => 'required',
-            'name' => 'required',
-            'email' => 'nullable',
-            'phone' => 'required',
-        ]);
-
-        $validated['user_id'] = Auth::id();
-
-        Prospect::create($validated);
+        Prospect::create($request->all());
 
         return redirect()->route('prospects.index')->with('success', 'Prospect record updated successfully!');
     }

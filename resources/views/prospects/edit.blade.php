@@ -2,7 +2,7 @@
 
 @section("content")
   <form
-    action="{{ route("prospects.update", $lead) }}"
+    action="{{ route("prospects.update", $prospect) }}"
     class="w-full flex flex-col gap-4"
     method="POST"
   >
@@ -37,9 +37,9 @@
       <input
         class="input"
         name="company_name"
-        placeholder="{{ $lead->company_name }}"
+        placeholder="{{ $prospect->company_name }}"
         type="text"
-        value="{{ $lead->company_name }}"
+        value="{{ $prospect->company_name }}"
       />
     </div>
 
@@ -51,9 +51,9 @@
       <input
         class="input"
         name="name"
-        placeholder="{{ $lead->name }}"
+        placeholder="{{ $prospect->name }}"
         type="text"
-        value="{{ $lead->name }}"
+        value="{{ $prospect->name }}"
       />
     </div>
 
@@ -64,9 +64,9 @@
       <input
         class="input"
         name="email"
-        placeholder="{{ $lead->email }}"
+        placeholder="{{ $prospect->email }}"
         type="text"
-        value="{{ $lead->email }}"
+        value="{{ $prospect->email }}"
       />
     </div>
 
@@ -78,17 +78,17 @@
       <input
         class="input"
         name="phone"
-        placeholder="{{ $lead->phone }}"
+        placeholder="{{ $prospect->phone }}"
         type="text"
-        value="{{ $lead->phone }}"
+        value="{{ $prospect->phone }}"
       />
     </div>
     <div class="w-full">
       <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
         <label class="form-label max-w-32">Lead Type</label>
         <select class="select" name="type">
-          <option value="Cold">Cold</option>
-          <option value="Warm">Warm</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
           <option value="Acquired">Acquired</option>
         </select>
       </div>
