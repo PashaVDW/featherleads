@@ -12,9 +12,52 @@ use Illuminate\View\View;
 
 class SalesController extends Controller
 {
+    protected $sale;
+
+    public function __construct()
+    {
+        $this->sale = Sale::where('user_id', Auth::id())->firstOrFail();
+    }
+
     public function index(): View
     {
-        $sale = Sale::where('user_id', Auth::id())->firstOrFail();
+        $monthlyData = $this->generateMonthlyData();
+
+        return view('sales.index', [
+            'sale' => $this->sale,
+            'toGoValue' => $this->sale->target_amount - $this->sale->sold,
+            'sold' => $this->sale->sold,
+            'monthlyData' => $monthlyData,
+        ]);
+    }
+
+    public function setMonthlyTarget(SalesMonthlyTargetRequest $request): RedirectResponse
+    {
+        $this->sale->update([
+            'target_amount' => $request->get('target_amount'),
+        ]);
+
+        return redirect()->route('sales.index')->with('success', 'Monthly Target updated successfully!');
+    }
+
+    public function addSale(): RedirectResponse
+    {
+        $this->sale->increment('sold', $this->sale->cost_per_customer);
+
+        return redirect()->route('sales.index')->with('success', 'Sale added successfully!');
+    }
+
+    public function setRPCAmount(RPCRequest $request): RedirectResponse
+    {
+        $this->sale->update([
+            'cost_per_customer' => $request->get('rpc'),
+        ]);
+
+        return redirect()->route('sales.index')->with('success', 'RPC Amount updated successfully!');
+    }
+
+    private function generateMonthlyData(): array
+    {
         $monthlyData = [];
         $currentMonth = Carbon::now();
 
@@ -29,50 +72,12 @@ class SalesController extends Controller
             $monthlyData[] = [
                 'month' => $currentMonth->format('M'),
                 'sold' => $monthlySale,
-                'target' => $sale->target_amount,
+                'target' => $this->sale->target_amount,
             ];
 
             $currentMonth->subMonth();
         }
 
-        return view('sales.index', [
-            'sale' => $sale,
-            'toGoValue' => $sale->target_amount - $sale->sold,
-            'sold' => $sale->sold,
-            'monthlyData' => $monthlyData,
-        ]);
-    }
-
-    public function setMonthlyTarget(SalesMonthlyTargetRequest $request): RedirectResponse
-    {
-        $salesId = Sale::where('user_id', Auth::id());
-
-        $salesId->update([
-            'target_amount' => $request->get('target_amount'),
-        ]);
-
-        return redirect()->route('sales.index')->with('success', 'Monthly Target updated successfully!');
-    }
-
-    public function addSale()
-    {
-        $sale = Sale::where('user_id', Auth::id())->firstOrFail();
-
-        $sale->update([
-            'sold' => ($sale->sold + $sale->cost_per_customer),
-        ]);
-
-        return redirect()->route('sales.index')->with('success', 'Sale added successfully!');
-    }
-
-    public function setRPCAmount(RPCRequest $request): RedirectResponse
-    {
-        $salesId = Sale::where('user_id', Auth::id());
-
-        $salesId->update([
-            'cost_per_customer' => $request->get('rpc'),
-        ]);
-
-        return redirect()->route('sales.index')->with('success', 'RPCAmount updated successfully!');
+        return $monthlyData;
     }
 }

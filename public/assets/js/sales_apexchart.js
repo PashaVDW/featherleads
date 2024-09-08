@@ -66,8 +66,9 @@ class KTExamplePieChart {
         const sortOptions = ['daily', 'weekly', 'monthly'];
         let currentSortIndex = 0;
 
-        // Data for different sort options
-        const daysInMonth = 30; // or use the dynamic function if needed
+        const currentDate = new Date();
+        const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
         const dataSets = {
             daily: {
                 sold: Math.round(sold / daysInMonth),
@@ -82,6 +83,7 @@ class KTExamplePieChart {
                 toGoValue: Math.round(toGoValue)
             }
         };
+
 
         // Function to update the chart data and the text
         function updateChartData() {

@@ -9,6 +9,8 @@ Route::middleware('auth')->name('home.')->controller(HomeController::class)->gro
     Route::get('/', 'index')->name('index');
     Route::post('/enroll_sales', 'enrollSales')->name('enrollSales');
     Route::delete('/unenroll_sales', 'unenrollSales')->name('unenrollSales');
+    Route::post('/enroll_finance', 'enrollFinances')->name('enrollFinances');
+    Route::delete('/unenroll_finance', 'unenrollFinances')->name('unenrollFinances');
 });
 
 Route::resource('prospects', ProspectController::class)->middleware('auth');
